@@ -1,16 +1,21 @@
-//const http = require("http");
+import express from "express";
 
-import { createServer } from "http";
+const app = express();
 
-// const hostname = "127.0.0.1";
 const port = process.env.PORT || 3000;
 
-const server = createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/html");
-  res.end("<h1>This is really easy!</h1>");
+app.get("/", (req, res) => {
+  res.send("hello from express!");
 });
 
-server.listen(port, () => {
+app.get("/trevor", (req, res) => {
+  res.send("this is trevors page!");
+});
+
+app.get("/joe", (req, res) => {
+  res.send("this is joes page!");
+});
+
+app.listen(port, () => {
   console.log(`Server running at port: ${port}/`);
 });
